@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карточка товара</title>
     
-    <!-- ВСЕ СТИЛИ ТЕПЕРЬ ТУТ -->
     <style>
         /* Сброс лишних отступов */
         * {
@@ -29,19 +28,145 @@
         #video-intro video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Видео заполнит экран без искажений */
+            object-fit: cover; 
+            object-position: center center;
         }
 
         /* Молочный фон для основного сайта */
         #main-content {
-            background-color: #fbf9f5; /* Красивый молочный цвет */
+            background-color: #f6f4ee; /* Красивый оттенок как на картинке */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             font-family: Arial, sans-serif;
-            padding: 20px;
+            padding: 0;
+        }
+
+        /* Контейнер всей шапки */
+        .header-container {
+            width: 100%;
+            padding: 20px 40px 10px 40px;
+        }
+
+        /* Строка логотипа */
+        .logo-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Левая часть логотипа (КАРТА) */
+        .logo-left {
+            font-size: 7.5vw; 
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            color: #1a1a1a;
+            line-height: 0.8;
+        }
+
+        /* Правая часть логотипа (товара) */
+        .logo-right {
+            font-size: 7.5vw;
+            font-weight: 300; 
+            letter-spacing: -2px;
+            color: #1a1a1a;
+            line-height: 0.8;
+            text-transform: uppercase;
+        }
+
+        /* Центральный блок с мелким текстом */
+        .center-text {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Вертикальный микротекст */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #555;
+            border-left: 1px solid #ccc;
+            padding-left: 4px;
+        }
+
+        /* Основной текст по центру */
+        .main-subtext {
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+        /* Курсивный текст "for experts" */
+        .italic-subtext {
+            font-style: italic;
+            font-weight: 400;
+            text-transform: lowercase;
+            font-size: 14px;
+            letter-spacing: 0px;
+            color: #777;
+        }
+
+        /* Тонкая линия */
+        .nav-divider {
+            width: 100%;
+            border: none;
+            border-top: 1px solid #dcdad4;
+            margin: 15px 0 10px 0;
+        }
+
+        /* Контейнер бегущей строки */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Лента бегущей строки */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 80px; 
+            animation: scrollMarquee 20s linear infinite; 
+        }
+
+        /* Настройка картинок в бегущей строке */
+        .marquee-track img {
+            height: 35px; 
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Анимация движения бегущей строки */
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Контейнер для фото товара */
+        .product-image-container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; 
+        }
+
+        .product-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         /* Класс для скрытия элементов */
@@ -53,34 +178,103 @@
 <body>
 
     <!-- Блок с полноэкранным видео -->
-    <div id="video-intro">
-        <!-- Убедитесь, что файл intro.mp4 лежит в той же папке -->
-        <video autoplay muted playsinline id="myVideo">
-            <source src="https://storage.yandexcloud.net/kartochkatovara/0718.mov" ttype="video/quicktime">
-        </video>
-       <audio autoplay id="myAudio"><source src="https://storage.yandexcloud.net/kartochkatovara/alexis_gaming_cam-riser-tranche-370393.mp3" type="audio/mpeg"></audio>
+<div id="video-intro">
+    <video autoplay muted playsinline preload="auto" id="myVideo">
+        <source src="https://storage.yandexcloud.net/kartochkatovara/0718.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+</div>
+
 
     </div>
 
     <!-- Главный контент сайта (молочный фон) -->
     <main id="main-content" class="hidden">
-        <!-- Сюда мы будем добавлять плашки -->
-        <div style="text-align: center;">
-            <h1>Название вашего товара</h1>
-            <p>Здесь начнется создание плашек...</p>
+        
+        <!-- Шапка сайта -->
+        <header class="header-container">
+            <div class="logo-row">
+                <span class="logo-left">КАРТА</span>
+                
+                <div class="center-text">
+                    <div class="vertical-text">TASTE. QUALITY. AESTHETICS.</div>
+                    <div class="main-subtext">
+                        MARBLED BEEF MADE<br>BY EXPERTS<br>
+                        <span class="italic-subtext">for experts</span>
+                    </div>
+                </div>
+                
+                <span class="logo-right">товара</span>
+            </div>
+
+            <hr class="nav-divider">
+
+            <!-- Бегущая строка -->
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                </div>
+            </div>
+        </header>
+ <hr class="nav-divider">
+        <!-- Блок для картинки вашего продукта -->
+        <div class="product-image-container">
+            <!-- Замените эту ссылку на реальное фото товара, когда загрузите его -->
+            <img src="https://storage.yandexcloud.net/kartochkatovara/38d2bb97-f17d-44a6-b8af-fad8173c76bd-Photoroom.png" alt="Продукт" class="product-img">
         </div>
+
     </main>
 
-    <!-- Скрипт для скрытия видео через 3 секунды -->
-   <script>
-    setTimeout(function() {
-        // ВСТАВИТЬ СЮДА:
-        document.getElementById('myAudio').pause();
+    <script>
+    const video = document.getElementById('myVideo');
+    const intro = document.getElementById('video-intro');
+    const mainContent = document.getElementById('main-content');
 
-        document.getElementById('video-intro').style.display = 'none';
-        document.getElementById('main-content').classList.remove('hidden');
-    }, 3000);
+    // Флаг, чтобы код переключения не сработал дважды
+    let isTransitioned = false;
+
+    function showMainContent() {
+        if (isTransitioned) return;
+        isTransitioned = true;
+
+        // Показываем основной контент заранее, чтобы он был под заставкой
+        mainContent.classList.remove('hidden');
+
+        // Делаем плавное растворение видео-заставки за 0.5 секунды
+        intro.style.transition = 'opacity 0.5s ease';
+        intro.style.opacity = '0';
+
+        // Полностью удаляем заставку после завершения анимации
+        setTimeout(() => {
+            intro.style.display = 'none';
+        }, 500);
+    }
+
+    // 1. Попытка запуститься (если заблокировано — сразу открываем сайт)
+    video.play().catch(function(error) {
+        console.log("Автозапуск заблокирован:", error);
+        showMainContent();
+    });
+
+    // 2. Если браузер корректно поймет, что видео закончилось
+    video.addEventListener('ended', showMainContent);
+
+    // 3. Жесткая страховка: сайт откроется через 4 секунды в любом случае!
+    // (Подстройте цифру 4000 под реальную длину вашего видео в миллисекундах)
+    setTimeout(showMainContent, 4000);
 </script>
+
+
 
 </body>
 </html>
