@@ -1,33 +1,86 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ООО «РУСЬ» — Котлетное мясо 70/30</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            sky: '#38BDF8',
-                            skyDark: '#0284C7',
-                            bg: '#F0F9FF',
-                            card: 'transparent',
-                            textDark: '#0F172A',
-                            textMuted: '#475569'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
+    <title>Карточка товара</title>
     
-=======
+    <!-- ВСЕ СТИЛИ ТЕПЕРЬ ТУТ -->
+    <style>
+        /* Сброс лишних отступов */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
->>>>>>> 7935d4f0436f49889d724fe583ea1215934a7745
+        /* Видео-заставка на весь экран */
+        #video-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        #video-intro video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Видео заполнит экран без искажений */
+        }
+
+        /* Молочный фон для основного сайта */
+        #main-content {
+            background-color: #fbf9f5; /* Красивый молочный цвет */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Класс для скрытия элементов */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Блок с полноэкранным видео -->
+    <div id="video-intro">
+        <!-- Убедитесь, что файл intro.mp4 лежит в той же папке -->
+        <video autoplay muted playsinline id="myVideo">
+            <source src="https://storage.yandexcloud.net/kartochkatovara/0718.mov" ttype="video/quicktime">
+        </video>
+       <audio autoplay id="myAudio"><source src="https://storage.yandexcloud.net/kartochkatovara/alexis_gaming_cam-riser-tranche-370393.mp3" type="audio/mpeg"></audio>
+
+    </div>
+
+    <!-- Главный контент сайта (молочный фон) -->
+    <main id="main-content" class="hidden">
+        <!-- Сюда мы будем добавлять плашки -->
+        <div style="text-align: center;">
+            <h1>Название вашего товара</h1>
+            <p>Здесь начнется создание плашек...</p>
+        </div>
+    </main>
+
+    <!-- Скрипт для скрытия видео через 3 секунды -->
+   <script>
+    setTimeout(function() {
+        // ВСТАВИТЬ СЮДА:
+        document.getElementById('myAudio').pause();
+
+        document.getElementById('video-intro').style.display = 'none';
+        document.getElementById('main-content').classList.remove('hidden');
+    }, 3000);
+</script>
+
+</body>
+</html>
