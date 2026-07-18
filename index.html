@@ -163,6 +163,57 @@
         .hidden {
             display: none !important;
         }
+         /* Стили для названия товара (ПК) */
+        .product-title-container {
+            width: 100%;
+            padding: 0 40px;
+            margin-top: 50px; /* Отступ от бегущей строки */
+            margin-bottom: 20px;
+            position: relative; /* Чтобы привязать диаметр к правому краю */
+            display: flex;
+            justify-content: center; /* 🌟 Центрируем название ровно по середине страницы */
+            align-items: center;
+        }
+
+        .product-name-block {
+            display: flex;
+            flex-direction: column; /* Строка под строкой */
+            align-items: center; /* Центрируем текст по горизонтали */
+            text-align: center;
+        }
+
+        .title-bold {
+            font-size: 3.5vw; /* Крупный жирный шрифт */
+            font-weight: 900;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .title-light {
+            font-size: 3.5vw; /* Тонкий шрифт строго под жирным */
+            font-weight: 300;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -1px;
+            margin-top: 5px; /* Небольшой отступ между строками */
+        }
+
+        .product-label {
+            position: absolute;
+            right: 40px; /* 🌟 Уносит диаметр в правую сторону страницы */
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+
+
+
 
            /* АДАПТИВ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ */
         @media (max-width: 600px) {
@@ -214,6 +265,42 @@
                 height: 14px !important;
                 padding: 0 15px !important;
 }
+ /* Название товара на мобилке */
+            .product-title-container {
+                padding: 0 20px !important;
+                margin-top: 35px !important;
+                margin-bottom: 20px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: flex-start !important; /* 🌟 На мобилке всё по левому краю */
+                position: static !important; /* Сбрасываем правое позиционирование ПК версии */
+            }
+
+            .product-name-block {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important; /* Выравнивание строк по левому краю */
+                text-align: left !important;
+                gap: 4px !important;
+            }
+
+            .title-bold, .title-light {
+                font-size: 7.5vw !important;
+                letter-spacing: -1px !important;
+                line-height: 0.9 !important;
+                margin-top: 0 !important;
+            }
+
+            .product-label {
+                position: static !important;
+                font-size: 11px !important;
+                color: #777 !important;
+                margin-top: 10px !important; /* 🌟 Красивый отступ под словом ГОВЯЖЬИ */
+                text-align: left !important;
+            }
+
+
         }
 
 
@@ -283,6 +370,16 @@
 
     <hr class="nav-divider">
 </header>
+
+<!-- Название товара -->
+<div class="product-title-container">
+    <div class="product-name-block">
+        <span class="title-bold">БУРГЕРНЫЕ КОТЛЕТЫ</span>
+        <span class="title-light">ГОВЯЖЬИ</span>
+    </div>
+    <div class="product-label">[ Ø 12 / 15 СМ. ]</div>
+</div>
+
 
 
         <!-- Блок для картинки продукта -->
