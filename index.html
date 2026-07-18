@@ -549,7 +549,516 @@
             .gost-text {
                 font-size: 11px !important;
             }
+            }
 
+/* ==========================================================================
+   СТИЛИ ДЛЯ НОВЫХ БЛОКОВ (ЖУРНАЛЬНЫЙ СТИЛЬ НА МОЛОЧНОМ ФОНЕ)
+   ========================================================================== */
+
+/* Общие переменные для интеграции */
+:root {
+    --milk-bg: #fbfaf6;       /* Тот самый премиальный молочный цвет */
+    --dark-editorial: #1a1a1a; /* Строгий черный для акцентов */
+    --muted-editorial: #555555; /* Приглушенный текст */
+}
+
+/* Общий контейнер секций */
+.editorial-section {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.editorial-title-block {
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--dark-editorial);
+    padding-bottom: 10px;
+}
+
+.editorial-title {
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--dark-editorial);
+    margin: 0 0 5px 0;
+}
+
+.editorial-subtitle {
+    font-size: 12px;
+    color: var(--muted-editorial);
+    margin: 0;
+}
+
+/* Блок: Быстрые фичи */
+.fast-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.feature-card {
+    background-color: var(--milk-bg);
+    border: 1px solid var(--dark-editorial);
+    padding: 15px;
+    text-align: center;
+}
+
+.feature-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted-editorial);
+    margin: 0 0 4px 0;
+}
+
+.feature-value {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--dark-editorial);
+    margin: 0;
+}
+
+/* Блок: Техническая карта и Вкладки */
+.tech-card-container {
+    background-color: var(--milk-bg);
+    border: 1px solid var(--dark-editorial);
+    padding: 30px;
+}
+
+.tech-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-bottom: 1px solid var(--dark-editorial);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .tech-card-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+
+/* Переключатели вкладок */
+.tabs-navigation {
+    display: flex;
+    gap: 5px;
+    border: 1px solid var(--dark-editorial);
+    padding: 3px;
+    background: #fff;
+}
+
+.tab-trigger-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 15px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--muted-editorial);
+    transition: all 0.2s ease;
+}
+
+.tab-trigger-btn.active-tab {
+    background-color: var(--dark-editorial);
+    color: #ffffff;
+}
+
+/* Контент вкладок (Таблицы) */
+.tab-content-pane {
+    display: none;
+}
+
+.tab-content-pane.active-pane {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 30px;
+}
+
+@media (min-width: 768px) {
+    .tab-content-pane.active-pane {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.tech-table-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tech-table-row:last-child {
+    border-bottom: 1px solid var(--dark-editorial);
+}
+
+.tech-row-label {
+    font-size: 12px;
+    color: var(--muted-editorial);
+}
+
+.tech-row-value {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--dark-editorial);
+    text-align: right;
+}
+
+.tech-row-value img {
+    max-height: 20px;
+    width: auto;
+    object-contain: fill;
+}
+
+/* Блок: Декларации */
+.declarations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .declarations-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.dec-card {
+    background-color: var(--milk-bg);
+    border: 1px solid var(--dark-editorial);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-h: 200px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dec-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(26,26,26,0.05);
+}
+
+.dec-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid var(--dark-editorial);
+    padding: 2px 8px;
+    background: #fff;
+}
+
+.dec-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--dark-editorial);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    background: #fff;
+}
+
+.dec-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--dark-editorial);
+}
+
+.dec-card h4 {
+    font-size: 15px;
+    font-weight: 900;
+    margin: 0 0 5px 0;
+    color: var(--dark-editorial);
+}
+
+.dec-card p {
+    font-size: 12px;
+    color: var(--muted-editorial);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.dec-action-link {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--dark-editorial);
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Блок: Маркировка (Этикетка) */
+.label-interactive-box {
+    background-color: var(--milk-bg);
+    border: 1px solid var(--dark-editorial);
+    padding: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    cursor: zoom-in;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.label-interactive-box:hover {
+    transform: scale(1.01);
+}
+
+.label-interactive-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #e5e5e5;
+}
+
+.label-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.label-interactive-box:hover .label-hover-overlay {
+    opacity: 1;
+}
+
+.label-overlay-btn {
+    background: #ffffff;
+    border: 1px solid var(--dark-editorial);
+    color: var(--dark-editorial);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Нижний блок: Форма и Контакты */
+.footer-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 992px) {
+    .footer-info-grid {
+        grid-template-columns: 5fr 7fr;
+    }
+}
+
+/* Форма */
+.editorial-form-block {
+    background-color: var(--milk-bg);
+    border: 1px solid var(--dark-editorial);
+    padding: 30px;
+}
+
+.form-input-group {
+    margin-bottom: 15px;
+}
+
+.form-input-group label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted-editorial);
+    margin-bottom: 5px;
+}
+
+.form-input-group input {
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid var(--dark-editorial);
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--dark-editorial);
+    border-radius: 0;
+    outline: none;
+}
+
+.form-submit-btn {
+    width: 100%;
+    background-color: var(--dark-editorial);
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    margin-top: 10px;
+}
+
+.form-submit-btn:hover {
+    opacity: 0.9;
+}
+
+.form-success-alert {
+    border: 1px dashed var(--dark-editorial);
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #fff;
+}
+
+/* Контакты */
+.contacts-column-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-person-card {
+    background-color: var(--milk-bg);
+    border: 1px solid var(--dark-editorial);
+    padding: 20px;
+}
+
+.contact-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.contact-avatar-text {
+    width: 36px;
+    height: 36px;
+    background-color: var(--dark-editorial);
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-name-title h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--dark-editorial);
+}
+
+.contact-name-title p {
+    margin: 0;
+    font-size: 11px;
+    color: var(--muted-editorial);
+}
+
+.contact-card-body {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 12px;
+    font-size: 13px;
+    color: var(--dark-editorial);
+    line-height: 1.6;
+}
+
+.contact-card-body p {
+    margin: 0 0 4px 0;
+}
+
+.contact-btn-link {
+    display: block;
+    text-align: center;
+    border: 1px solid var(--dark-editorial);
+    padding: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--dark-editorial);
+    text-decoration: none;
+    margin-top: 12px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.contact-btn-link:hover {
+    background-color: var(--dark-editorial);
+    color: #ffffff;
+}
+
+/* Лайтбокс медиа */
+.global-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.96);
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    items-content: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-blur: 4px;
+}
+
+.lightbox-close-trigger {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-content-stage {
+    max-width: 800px;
+    width: 100%;
+    max-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content-stage img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border: 2px solid #fff;
+}
+
+/* Подвал */
+.editorial-footer {
+    border-top: 1px solid var(--dark-editorial);
+    margin-top: 50px;
+    padding: 20px 0 40px 0;
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted-editorial);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
 
         }
@@ -637,7 +1146,6 @@
         <div class="product-image-container">
             <img src="https://storage.yandexcloud.net/kartochkatovara/38d2bb97-f17d-44a6-b8af-fad8173c76bd-Photoroom.png" alt="Продукт" class="product-img">
         </div>
-        
     </main>
 
 <!-- БЛОК ХАРАКТЕРИСТИК И ОПИСАНИЯ -->
@@ -651,7 +1159,7 @@
 
     <!-- Строка бренда и категории -->
     <div class="details-specs">
-        Бренд: <span class="spec-bold">RUSSKY</span>  |  Страна производства: РФ  |  ПОЛУФАБРИКАТ НАТУРАЛЬНЫЙ КАТЕГОРИИ Б
+        </span>  |  Страна производства: РФ  |  ПОЛУФАБРИКАТ НАТУРАЛЬНЫЙ КАТЕГОРИИ Б
     </div>
 
     <!-- Первая сетка: Цена и Заказ -->
@@ -679,7 +1187,7 @@
     <div class="nutrition-heading">ПИЩЕВАЯ ЦЕННОСТЬ (НА 100Г ПРОДУКТА)</div>
     <div class="details-grid-four">
         <div class="grid-cell">
-            <div class="cell-label">ВЕЛКИ</div>
+            <div class="cell-label">БЕЛКИ</div>
             <div class="cell-value">19,2 г</div>
         </div>
         <div class="grid-cell">
@@ -701,6 +1209,309 @@
         <span class="gost-icon">✓</span>
         <p class="gost-text">Продукция полностью соответствует требованиям ГОСТ и ТУ. Все ветеринарные документы автоматически отправляются через ФГИС «Меркурий».</p>
     </div>
+
+<!-- ==========================================
+     БЛОК: БЫСТРЫЕ ФИЧИ (ВСТАВИТЬ СРАЗУ ПОД ОПИСАНИЕ)
+     ========================================== -->
+<div class="editorial-section">
+    <div class="fast-features-grid">
+        <div class="feature-card">
+            <p class="feature-label">Жирность продукта</p>
+            <p class="feature-value">до 30%</p>
+        </div>
+        <div class="feature-card">
+            <p class="feature-label">Температура хранения</p>
+            <p class="feature-value">-18 °C</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     РАЗДЕЛ: ТЕХНИЧЕСКАЯ КАРТА
+     ========================================== -->
+<section class="editorial-section">
+    <div class="tech-card-container">
+        <div class="tech-card-header">
+            <div>
+                <h3 class="editorial-title" style="font-size: 18px;">Техническая карта товара</h3>
+                <p class="editorial-subtitle">Характеристики из спецификации ООО "РУСЬ"</p>
+            </div>
+            
+            <!-- Переключатели вкладок -->
+            <div class="tabs-navigation">
+                <button id="tab-btn-general" onclick="switchTab('general')" class="tab-trigger-btn active-tab">Общие данные</button>
+                <button id="tab-btn-logistic" onclick="switchTab('logistic')" class="tab-trigger-btn">Логистика</button>
+                <button id="tab-btn-docs" onclick="switchTab('docs')" class="tab-trigger-btn">Коды и Бухучет</button>
+            </div>
+        </div>
+
+        <!-- Вкладка 1: Общие данные -->
+        <div id="tab-content-general" class="tab-content-pane active-pane">
+            <div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Наименование товара</span>
+                    <span class="tech-row-value">Котлетное мясо 70/30</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Срок годности в днях</span>
+                    <span class="tech-row-value">365 дней</span>
+                </div>
+            </div>
+            <div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Температурный режим</span>
+                    <span class="tech-row-value" style="font-weight: 900;">-18 °C</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Поставщик / Производитель</span>
+                    <span class="tech-row-value">ООО "РУСЬ"</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Торговая марка (Бренд)</span>
+                    <span class="tech-row-value">
+                        <!-- Здесь подгружается логотип, подставь имя файла логотипа, если нужно заменить Russky_1.png -->
+                        <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="RUSSKY">
+                    </span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Содержит добавки Е</span>
+                    <span class="tech-row-value" style="color: #007a48;">Не содержит</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка 2: Логистика -->
+        <div id="tab-content-logistic" class="tab-content-pane">
+            <div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Коробов на Европаллете</span>
+                    <span class="tech-row-value">до 50 шт.</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Количеств слоев</span>
+                    <span class="tech-row-value">до 10</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Высота / Вес Брутто</span>
+                    <span class="tech-row-value">1.75 м / до 800 кг</span>
+                </div>
+            </div>
+            <div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Вид упаковки тары</span>
+                    <span class="tech-row-value">Пакет</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Вес Короба (Нетто/Брутто)</span>
+                    <span class="tech-row-value">до 25 кг / до 25 кг</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Штрих-код Короба</span>
+                    <span class="tech-row-value" style="color:#777; font-weight:400;">Паллетный лист без штрихкода</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка 3: Бухучет -->
+        <div id="tab-content-docs" class="tab-content-pane">
+            <div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Код ТН ВЭД</span>
+                    <span class="tech-row-value">0201</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Код ОКПД2</span>
+                    <span class="tech-row-value">10.11.20.190</span>
+                </div>
+            </div>
+            <div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Цена за килограмм</span>
+                    <span class="tech-row-value">348 ₽</span>
+                </div>
+                <div class="tech-table-row">
+                    <span class="tech-row-label">Ставка НДС</span>
+                    <span class="tech-row-value">10%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     РАЗДЕЛ: ДЕКЛАРАЦИИ О СООТВЕТСТВИИ
+     ========================================== -->
+<section class="editorial-section">
+    <div class="editorial-title-block">
+        <h3 class="editorial-title">Декларации о соответствии</h3>
+        <p class="editorial-subtitle">Официальные государственные бланки ЕАС. Нажмите на карточку для просмотра.</p>
+    </div>
+    
+    <div class="declarations-grid">
+        <div onclick="openLightbox('https://storage.yandexcloud.net/investiciirus/%D0%B4%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D1%8F/dek1.png')" class="dec-card">
+    <span class="dec-badge" style="color: #007a48;">До 2028 года</span>
+    <div>
+        <div class="dec-icon-wrap">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+        </div>
+        <h4>Основной бланк ЕАС</h4>
+        <p>Регистрационный лист декларации соответствия (Страница 1)</p>
+    </div>
+    <span class="dec-action-link">Открыть документ →</span>
+</div>
+
+
+        <!-- Бланк 2 -->
+        <div onclick="openLightbox('dec2')" class="dec-card">
+            <span class="dec-badge">ГОСТ Р 54704</span>
+            <div>
+                <div class="dec-icon-wrap">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                <h4>Приложение №1 (Ч. 1)</h4>
+                <p>Перечень продукции категорий А и Б (Страница 2)</p>
+            </div>
+            <span class="dec-action-link">Открыть спецификацию →</span>
+        </div>
+
+        <!-- Бланк 3 -->
+        <div onclick="openLightbox('dec3')" class="dec-card">
+            <span class="dec-badge">Субпродукты</span>
+            <div>
+                <div class="dec-icon-wrap">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h4>Приложение №1 (Ч. 2)</h4>
+                <p>Перечень продукции категорий А и Б (Страница 3)</p>
+            </div>
+            <span class="dec-action-link">Открыть спецификацию →</span>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     РАЗДЕЛ: МАРКИРОВКА ТОВАРА (ЭТИКЕТКА)
+     ========================================== -->
+<section class="editorial-section">
+    <div class="editorial-title-block">
+        <h3 class="editorial-title">Маркировка товара (Этикетка)</h3>
+        <p class="editorial-subtitle">Пример официальной этикетки ГОСТ на коробке. Нажмите для увеличения.</p>
+    </div>
+    
+    <div onclick="openLightbox('label')" class="label-interactive-box">
+        <img src="lulu.jpeg" alt="Маркировка товара Этикетка">
+        <div class="label-hover-overlay">
+            <span class="label-overlay-btn">Увеличить этикетку ГОСТ</span>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     РАЗДЕЛ: ОБРАТНАЯ СВЯЗЬ И КОНТАКТЫ
+     ========================================== -->
+<section class="editorial-section" style="margin-top: 50px;">
+    <div class="footer-info-grid">
+        
+        <!-- Левая колонка: Форма -->
+        <div class="editorial-form-block">
+            <h4 style="font-size: 16px; font-weight: 900; margin: 0 0 5px 0; text-transform: uppercase; color: var(--dark-editorial);">Оптовый прайс-лист</h4>
+            <p style="font-size: 11px; color: var(--muted-editorial); margin: 0 0 20px 0;">Расчет стоимости поставки со скидкой от объема в течение 15 минут.</p>
+            
+            <div id="form-success-msg" class="form-success-alert" style="display: none;">
+                <p style="margin: 0 0 5px 0; font-weight: 900; color: #007a48;">✓ ЗАЯВКА УСПЕШНО ОТПРАВЛЕНА!</p>
+                <p style="margin: 0; font-size: 11px; color: var(--muted-editorial);">Менеджер уже готовит индивидуальный расчет.</p>
+            </div>
+            
+            <form id="callback-form" onsubmit="sendViaMailto(event)">
+                <div class="form-input-group">
+                    <label for="client-name">Ваше имя</label>
+                    <input id="client-name" type="text" required placeholder="Александр">
+                </div>
+                <div class="form-input-group">
+                    <label for="client-phone">Телефон</label>
+                    <input id="client-phone" type="tel" required placeholder="+7 (999) 000-00-00">
+                </div>
+                <button type="submit" class="form-submit-btn">Получить предложение ⚡</button>
+                <p style="text-align: center; font-size: 9px; color: var(--muted-editorial); margin-top: 10px; line-height: 1.3;">
+                    Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+                </p>
+            </form>
+        </div>
+
+        <!-- Правая колонка: Контакты -->
+        <div class="contacts-column-wrap">
+            <div>
+                <span style="font-size: 9px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: var(--muted-editorial); display: block; margin-bottom: 2px;">Прямой заказ со склада производителя</span>
+                <h3 style="font-size: 20px; font-weight: 950; margin: 0 0 5px 0; text-transform: uppercase; color: var(--dark-editorial);">Отдел продаж ООО "РУСЬ"</h3>
+                <p style="font-size: 12px; color: var(--muted-editorial); margin: 0; line-height: 1.4;">
+                    Оптовые поставки, подготовка спецификаций под объем, отправка пробных образцов продукции на ваше производство.
+                </p>
+            </div>
+            
+            <!-- Антон -->
+            <div class="contact-person-card">
+                <div class="contact-card-header">
+                    <div class="contact-avatar-text">А</div>
+                    <div class="contact-name-title">
+                        <h3>Антон</h3>
+                        <p>Менеджер отдела продаж</p>
+                    </div>
+                </div>
+                <div class="contact-card-body">
+                    <p>📞 +7 (900) 634-72-35</p>
+                    <p>✉ tosha.ivanow2015@yandex.ru</p>
+                    <a href="tel:+79006347235" class="contact-btn-link">Позвонить менеджеру →</a>
+                </div>
+            </div>
+
+            <!-- Александр -->
+            <div class="contact-person-card">
+                <div class="contact-card-header">
+                    <div class="contact-avatar-text">АР</div>
+                    <div class="contact-name-title">
+                        <h3>Александр Рудный</h3>
+                        <p>Генеральный директор</p>
+                    </div>
+                </div>
+                <div class="contact-card-body">
+                    <p>📞 +7 (910) 422-18-88</p>
+                    <p>✉ aleksandr.rudniy@yandex.ru</p>
+                    <a href="https://max.ru" target="_blank" class="contact-btn-link">Связаться через MAX →</a>
+                </div>
+            </div>
+        </div>
+
+  
+</section>
+
+<!-- ==========================================
+     ПОДВАЛ САЙТА
+     ========================================== -->
+<footer class="editorial-footer">
+    <p>© 2026 ООО "РУСЬ". ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
+</footer>
+
+<!-- ==========================================
+     ПРОКАЧАННЫЙ ЛАЙТБОКС (МОДАЛЬНОЕ ОКНО)
+     ========================================== -->
+<div id="global-lightbox" class="global-lightbox-overlay" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="lightbox-close-trigger" title="Закрыть">✕</button>
+    <div class="lightbox-content-stage" onclick="event.stopPropagation()">
+        <div id="lightbox-media-container">
+            <!-- Сюда JS будет инжектировать картинки -->
+        </div>
+    </div>
+    <div style="margin-top: 15px; text-align: center; color: #fff;">
+        <p id="lightbox-media-title" style="margin: 0; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;"></p>
+        <p style="margin: 5px 0 0 0; font-size: 10px; color: #888;">Кликните в любом месте, чтобы закрыть</p>
+    </div>
+</div>
 
 </div>
 
@@ -729,5 +1540,88 @@
     video.addEventListener('ended', showMainContent);
     setTimeout(showMainContent, 4000);
 </script>
+<script>
+/* ==========================================================================
+   СКРИПТЫ ДЛЯ РАБОТЫ ВКЛАДОК, ЛАЙТБОКСА И ОТПРАВКИ ФОРМЫ
+   ========================================================================== */
+
+// 1. Переключение Вкладок Техкарты
+function switchTab(tabId) {
+    // Находим все кнопки вкладок и убираем активный класс
+    const buttons = document.querySelectorAll('.tab-trigger-btn');
+    buttons.forEach(btn => btn.classList.remove('active-tab'));
+    
+    // Находим все контейнеры данных и скрываем их
+    const panes = document.querySelectorAll('.tab-content-pane');
+    panes.forEach(pane => pane.classList.remove('active-pane'));
+    
+    // Активируем нужную кнопку и панель
+    document.getElementById(`tab-btn-${tabId}`).classList.add('active-tab');
+    document.getElementById(`tab-content-${tabId}`).classList.add('active-pane');
+}
+
+// 2. Универсальный Полноэкранный Просмотрщик (Лайтбокс)
+function openLightbox(contentType) {
+    const lightbox = document.getElementById('global-lightbox');
+    const container = document.getElementById('lightbox-media-container');
+    const title = document.getElementById('lightbox-media-title');
+    
+    let imgSrc = '';
+    let imgAlt = '';
+    
+    // Карта путей картинок
+    switch(contentType) {
+        case 'dec1':
+            imgSrc = 'dec1.jpg'; // Подставь реальный путь к файлу 1-й декларации, если имя другое
+            imgAlt = 'Основной бланк ЕАС — Страница 1';
+            break;
+        case 'dec2':
+            imgSrc = 'dec2.jpg'; // Подставь реальный путь к файлу 2-й декларации
+            imgAlt = 'Приложение №1 (Часть 1) — Страница 2';
+            break;
+        case 'dec3':
+            imgSrc = 'dec3.jpg'; // Подставь реальный путь к файлу 3-й декларации
+            imgAlt = 'Приложение №1 (Часть 2) — Страница 3';
+            break;
+        case 'label':
+            imgSrc = 'lulu.jpeg';
+            imgAlt = 'Маркировка товара ГОСТ (Этикетка)';
+            break;
+        default:
+            return;
+    }
+    
+    // Генерируем изображение внутри модалки
+    container.innerHTML = `<img src="${imgSrc}" alt="${imgAlt}">`;
+    title.innerText = imgAlt;
+    
+    // Показываем лайтбокс
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    document.getElementById('global-lightbox').style.style.display = 'none';
+}
+
+// 3. Отправка формы на почту через почтовый клиент
+function sendViaMailto(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('client-name').value;
+    const phone = document.getElementById('client-phone').value;
+    const emailTo = 'vergonskaya@icloud.com';
+    
+    const subject = encodeURIComponent('Новая заявка с сайта ООО РУСЬ');
+    const body = encodeURIComponent(`Имя оптового клиента: ${name}\nТелефон для связи: ${phone}`);
+    
+    // Инициируем вызов почтовика
+    window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+    
+    // Прячем поля формы и выводим элегантную благодарственную плашку
+    document.getElementById('callback-form').style.display = 'none';
+    document.getElementById('form-success-msg').style.display = 'block';
+}
+</script>
+
 </body>
 </html>
