@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -40,7 +41,7 @@
             font-family: Arial, sans-serif;
             padding: 0;
         }
-        /* Контейнер всей шапки */
+        /* Контейнер всей шапки (для ПК) */
         .header-container {
             width: 100%;
             padding: 20px 40px 10px 40px;
@@ -105,7 +106,7 @@
             color: #777;
         }
         
-        /* Тонкие линии (теперь они будут одинаковыми) */
+        /* Тонкие линии */
         .nav-divider {
             width: 100%;
             border: none;
@@ -113,13 +114,13 @@
             margin: 0 !important;
         }
 
-        /* БЕСШОВНАЯ БЕГУЩАЯ СТРОКА */
+        /* Бесшовная бегущая строка */
         .marquee-container {
             overflow: hidden !important;
             width: 100% !important;
-            display: flex !important; /* Выстраивает треки в одну линию */
+            display: flex !important;
             align-items: center;
-            padding: 10px 0; /* Отступы внутри строки, чтобы логотипы не прижимались к линиям */
+            padding: 10px 0;
         }
         
         .marquee-track {
@@ -128,14 +129,13 @@
             justify-content: space-around;
             min-width: 100%;
             flex-shrink: 0;
-            /* Изменяй 35s (секунды), чтобы сделать быстрее или медленнее */
             animation: scrollMarquee 35s linear infinite !important; 
         }
         
         .marquee-track img {
-            height: 24px !important; /* Жесткая высота логотипов */
+            height: 24px !important;
             width: auto !important;
-            padding: 0 25px !important; /* Расстояние между логотипами */
+            padding: 0 25px !important;
         }
 
         @keyframes scrollMarquee {
@@ -143,7 +143,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-100%); /* Плавный сдвиг всей ленты */
+                transform: translateX(-100%);
             }
         }
 
@@ -163,6 +163,42 @@
         /* Класс для скрытия элементов */
         .hidden {
             display: none !important;
+        }
+
+        /* АДАПТИВ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ */
+        @media (max-width: 600px) {
+            .header-container {
+                padding: 20px 16px 10px 16px !important; /* Уменьшаем поля, раздвигая линии во весь экран */
+            }
+            
+            .logo-row {
+                display: grid !important; /* Включаем сетку вместо одной линии */
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: 
+                    "left right"
+                    "center center";
+                row-gap: 20px; /* Расстояние между надписями и мелким текстом */
+                align-items: center;
+            }
+            
+            .logo-left {
+                grid-area: left;
+                font-size: 11vw !important; /* Пропорционально увеличиваем под мобильный экран */
+                letter-spacing: -1px;
+            }
+            
+            .logo-right {
+                grid-area: right;
+                font-size: 11vw !important;
+                letter-spacing: -1px;
+                text-align: right;
+            }
+            
+            .center-text {
+                grid-area: center;
+                justify-content: center; /* Центрируем маленький блок текста посередине */
+                margin-top: 5px;
+            }
         }
     </style>
 </head>
@@ -196,9 +232,8 @@
 
             <hr class="nav-divider">
 
-            <!-- Бегущая строка (теперь внутри два одинаковых блока для бесконечного цикла) -->
+            <!-- Бегущая строка -->
             <div class="marquee-container">
-                <!-- Блок 1 -->
                 <div class="marquee-track">
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
@@ -212,7 +247,6 @@
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
                 </div>
-                <!-- Блок 2 (Точная копия первого, создает эффект бесконечности) -->
                 <div class="marquee-track">
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
@@ -228,7 +262,7 @@
                 </div>
             </div>
 
-            <hr class="nav-divider"> <!-- Линия перенесена сюда, внутрь header -->
+            <hr class="nav-divider">
         </header>
 
         <!-- Блок для картинки продукта -->
