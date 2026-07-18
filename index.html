@@ -46,65 +46,64 @@
             width: 100%;
             padding: 20px 40px 10px 40px;
         }
-        /* Строка логотипа */
+         /* Строка логотипа */
         .logo-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
         }
+        /* Контейнер для КАРТА ТОВАРА на ПК */
+        .brand-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+        }
         /* Левая часть логотипа (КАРТА) */
         .logo-left {
-            font-size: 7.5vw; 
+            font-size: 4.5vw; /* Уменьшили vw, так как теперь слова стоят вместе */
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: -3px;
+            letter-spacing: -2px;
             color: #1a1a1a;
             line-height: 0.8;
         }
         /* Правая часть логотипа (товара) */
         .logo-right {
-            font-size: 7.5vw;
+            font-size: 4.5vw;
             font-weight: 300; 
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             color: #1a1a1a;
             line-height: 0.8;
             text-transform: uppercase;
         }
-        /* Центральный блок с мелким текстом */
-        .center-text {
+        /* Правый блок с цитатой и вертикальной чертой */
+        .quote-wrapper {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            flex-direction: column;
+            align-items: flex-start;
+            border-left: 1px solid #1a1a1a; /* Вертикальная черта на ПК */
+            padding-left: 20px;
         }
-        /* Вертикальный микротекст */
-        .vertical-text {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            font-size: 7px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #555;
-            border-left: 1px solid #ccc;
-            padding-left: 4px;
-        }
-        /* Основной текст по центру */
+        /* Текст большими буквами */
         .main-subtext {
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: 1px;
             color: #333;
+            text-transform: uppercase; /* Автоматически делает все буквы заглавными */
         }
-        /* Курсивный текст "for experts" */
+        /* Автор Александр Рудный под текстом */
         .italic-subtext {
             font-style: italic;
             font-weight: 400;
-            text-transform: lowercase;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 0px;
             color: #777;
+            margin-top: 4px; /* Отступ сверху, чтобы встал строго под надписью */
         }
+
         
         /* Тонкие линии */
         .nav-divider {
@@ -165,42 +164,61 @@
             display: none !important;
         }
 
-        /* АДАПТИВ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ */
+           /* АДАПТИВ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ */
         @media (max-width: 600px) {
             .header-container {
-                padding: 20px 0px 10px 0px !important; /* Уменьшаем поля, раздвигая линии во весь экран */
+                padding: 20px 0px 10px 0px !important; /* Линии и бегущая строка во весь экран */
             }
             
             .logo-row {
-                display: grid !important; /* Включаем сетку вместо одной линии */
-                grid-template-columns: 1fr 1fr;
-                grid-template-areas: 
-                    "left right"
-                    "center center";
-                row-gap: 20px; /* Расстояние между надписями и мелким текстом */
-                align-items: center;
-                padding: 0 20px !important; 
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 0 20px !important; /* Отступ по бокам для контента */
             }
             
-            .logo-left {
-                grid-area: left;
-                font-size: 11vw !important; /* Пропорционально увеличиваем под мобильный экран */
-                letter-spacing: -1px;
+            .brand-wrapper {
+                display: flex !important;
+                flex-direction: column !important; /* На мобилке слова встают друг под другом */
+                gap: 2px !important;
             }
             
-            .logo-right {
-                grid-area: right;
-                font-size: 11vw !important;
-                letter-spacing: -1px;
-                text-align: right;
+            .logo-left, .logo-right {
+                font-size: 8.5vw !important; /* Крупный размер для смартфона */
+                letter-spacing: -1px !important;
+                text-align: left !important;
+                line-height: 0.9 !important;
             }
             
-            .center-text {
-                grid-area: center;
-                justify-content: center; /* Центрируем маленький блок текста посередине */
-                margin-top: 5px;
+            .quote-wrapper {
+                border-left: 1px solid #1a1a1a !important; /* Вертикальная черта на мобилке */
+                padding-left: 15px !important;
+                margin-left: 15px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
             }
+            
+            .main-subtext {
+                font-size: 11px !important; /* Чуть компактнее под узкий экран */
+            }
+            
+            .italic-subtext {
+                font-size: 11px !important;
+                margin-top: 2px !important;
+            }
+            .marquee-container {
+             padding: 5px 0 !important;
+             }
+             .marquee-track img {
+                height: 14px !important;
+                padding: 0 15px !important;
+}
         }
+
+
+
+
     </style>
 </head>
 <body>
@@ -216,55 +234,56 @@
     <main id="main-content" class="hidden">
         
         <!-- Шапка сайта -->
-        <header class="header-container">
-            <div class="logo-row">
-                <span class="logo-left">КАРТА</span>
-                
-                <div class="center-text">
-                    <div class="vertical-text">TASTE. QUALITY. AESTHETICS.</div>
-                    <div class="main-subtext">
-                        MARBLED BEEF MADE<br>BY EXPERTS<br>
-                        <span class="italic-subtext">for experts</span>
-                    </div>
-                </div>
-                
-                <span class="logo-right">товара</span>
-            </div>
+<header class="header-container">
+    <div class="logo-row">
+        <!-- Левая часть: КАРТА ТОВАРА теперь в одном блоке -->
+        <div class="brand-wrapper">
+            <span class="logo-left">КАРТА</span>
+            <span class="logo-right">товара</span>
+        </div>
+        
+        <!-- Правая часть: Цитата и Автор через вертикальную черту -->
+        <div class="quote-wrapper">
+            <div class="main-subtext">"НАТУРАЛЬНОЕ ДОСТУПНО КАЖДОМУ"</div>
+            <div class="italic-subtext">Александр Рудный</div>
+        </div>
+    </div>
 
-            <hr class="nav-divider">
+    <hr class="nav-divider">
+    
+    <!-- Бегущая строка -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+        </div>
+        <div class="marquee-track">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+            <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+        </div>
+    </div>
 
-            <!-- Бегущая строка -->
-            <div class="marquee-container">
-                <div class="marquee-track">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                </div>
-                <div class="marquee-track">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
-                </div>
-            </div>
+    <hr class="nav-divider">
+</header>
 
-            <hr class="nav-divider">
-        </header>
 
         <!-- Блок для картинки продукта -->
         <div class="product-image-container">
