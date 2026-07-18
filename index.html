@@ -12,7 +12,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         /* Видео-заставка на весь экран */
         #video-intro {
             position: fixed;
@@ -24,17 +23,15 @@
             z-index: 9999;
             overflow: hidden;
         }
-
         #video-intro video {
             width: 100%;
             height: 100%;
             object-fit: cover; 
             object-position: center center;
         }
-
         /* Молочный фон для основного сайта */
         #main-content {
-            background-color: #f6f4ee; /* Красивый оттенок как на картинке */
+            background-color: #f6f4ee; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -43,13 +40,11 @@
             font-family: Arial, sans-serif;
             padding: 0;
         }
-
         /* Контейнер всей шапки */
         .header-container {
             width: 100%;
             padding: 20px 40px 10px 40px;
         }
-
         /* Строка логотипа */
         .logo-row {
             display: flex;
@@ -57,7 +52,6 @@
             align-items: center;
             width: 100%;
         }
-
         /* Левая часть логотипа (КАРТА) */
         .logo-left {
             font-size: 7.5vw; 
@@ -67,7 +61,6 @@
             color: #1a1a1a;
             line-height: 0.8;
         }
-
         /* Правая часть логотипа (товара) */
         .logo-right {
             font-size: 7.5vw;
@@ -77,14 +70,12 @@
             line-height: 0.8;
             text-transform: uppercase;
         }
-
         /* Центральный блок с мелким текстом */
         .center-text {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-
         /* Вертикальный микротекст */
         .vertical-text {
             writing-mode: vertical-rl;
@@ -96,7 +87,6 @@
             border-left: 1px solid #ccc;
             padding-left: 4px;
         }
-
         /* Основной текст по центру */
         .main-subtext {
             font-size: 11px;
@@ -105,7 +95,6 @@
             letter-spacing: 1px;
             color: #333;
         }
-
         /* Курсивный текст "for experts" */
         .italic-subtext {
             font-style: italic;
@@ -115,43 +104,47 @@
             letter-spacing: 0px;
             color: #777;
         }
-
-        /* Тонкая линия */
+        
+        /* Тонкие линии (теперь они будут одинаковыми) */
         .nav-divider {
             width: 100%;
             border: none;
             border-top: 1px solid #dcdad4;
-            margin: 15px 0 10px 0;
+            margin: 0 !important;
         }
 
-        /* Контейнер бегущей строки */
+        /* БЕСШОВНАЯ БЕГУЩАЯ СТРОКА */
         .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            padding: 10px 0;
-            display: flex;
+            overflow: hidden !important;
+            width: 100% !important;
+            display: flex !important; /* Выстраивает треки в одну линию */
             align-items: center;
+            padding: 10px 0; /* Отступы внутри строки, чтобы логотипы не прижимались к линиям */
         }
-
-        /* Лента бегущей строки */
+        
         .marquee-track {
-            display: flex;
-            width: max-content;
-            gap: 80px; 
-            animation: scrollMarquee 20s linear infinite; 
+            display: flex !important;
+            align-items: center;
+            justify-content: space-around;
+            min-width: 100%;
+            flex-shrink: 0;
+            /* Изменяй 35s (секунды), чтобы сделать быстрее или медленнее */
+            animation: scrollMarquee 35s linear infinite !important; 
         }
-
-        /* Настройка картинок в бегущей строке */
+        
         .marquee-track img {
-            height: 35px; 
-            width: auto;
-            object-fit: contain;
+            height: 24px !important; /* Жесткая высота логотипов */
+            width: auto !important;
+            padding: 0 25px !important; /* Расстояние между логотипами */
         }
 
-        /* Анимация движения бегущей строки */
         @keyframes scrollMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%); /* Плавный сдвиг всей ленты */
+            }
         }
 
         /* Контейнер для фото товара */
@@ -162,13 +155,11 @@
             justify-content: center;
             margin-top: 20px; 
         }
-
         .product-img {
             width: 100%;
             height: auto;
             object-fit: contain;
         }
-
         /* Класс для скрытия элементов */
         .hidden {
             display: none !important;
@@ -176,16 +167,12 @@
     </style>
 </head>
 <body>
-
     <!-- Блок с полноэкранным видео -->
-<div id="video-intro">
-    <video autoplay muted playsinline preload="auto" id="myVideo">
-        <source src="https://storage.yandexcloud.net/kartochkatovara/0718.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
-    </video>
-</div>
-
-
+    <div id="video-intro">
+        <video autoplay muted playsinline preload="auto" id="myVideo">
+            <source src="https://storage.yandexcloud.net/kartochkatovara/0718.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
     </div>
 
     <!-- Главный контент сайта (молочный фон) -->
@@ -209,8 +196,23 @@
 
             <hr class="nav-divider">
 
-            <!-- Бегущая строка -->
+            <!-- Бегущая строка (теперь внутри два одинаковых блока для бесконечного цикла) -->
             <div class="marquee-container">
+                <!-- Блок 1 -->
+                <div class="marquee-track">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                    <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
+                </div>
+                <!-- Блок 2 (Точная копия первого, создает эффект бесконечности) -->
                 <div class="marquee-track">
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
@@ -225,56 +227,40 @@
                     <img src="https://storage.yandexcloud.net/kartochkatovara/Russky_3.png" alt="Logo">
                 </div>
             </div>
+
+            <hr class="nav-divider"> <!-- Линия перенесена сюда, внутрь header -->
         </header>
- <hr class="nav-divider">
-        <!-- Блок для картинки вашего продукта -->
+
+        <!-- Блок для картинки продукта -->
         <div class="product-image-container">
-            <!-- Замените эту ссылку на реальное фото товара, когда загрузите его -->
             <img src="https://storage.yandexcloud.net/kartochkatovara/38d2bb97-f17d-44a6-b8af-fad8173c76bd-Photoroom.png" alt="Продукт" class="product-img">
         </div>
-
     </main>
 
     <script>
     const video = document.getElementById('myVideo');
     const intro = document.getElementById('video-intro');
     const mainContent = document.getElementById('main-content');
-
-    // Флаг, чтобы код переключения не сработал дважды
     let isTransitioned = false;
 
     function showMainContent() {
         if (isTransitioned) return;
         isTransitioned = true;
-
-        // Показываем основной контент заранее, чтобы он был под заставкой
         mainContent.classList.remove('hidden');
-
-        // Делаем плавное растворение видео-заставки за 0.5 секунды
         intro.style.transition = 'opacity 0.5s ease';
         intro.style.opacity = '0';
-
-        // Полностью удаляем заставку после завершения анимации
         setTimeout(() => {
             intro.style.display = 'none';
         }, 500);
     }
 
-    // 1. Попытка запуститься (если заблокировано — сразу открываем сайт)
     video.play().catch(function(error) {
         console.log("Автозапуск заблокирован:", error);
         showMainContent();
     });
 
-    // 2. Если браузер корректно поймет, что видео закончилось
     video.addEventListener('ended', showMainContent);
-
-    // 3. Жесткая страховка: сайт откроется через 4 секунды в любом случае!
-    // (Подстройте цифру 4000 под реальную длину вашего видео в миллисекундах)
     setTimeout(showMainContent, 4000);
 </script>
-
-
-
 </body>
 </html>
